@@ -1,0 +1,7 @@
+{
+  "navigationBarTitleText": "电影列表",
+  "navigationBarTextStyle": "white",
+  "usingComponents": {
+    "Tabs": "../../components/Tabs/Tabs"
+  }
+}

@@ -1,0 +1,17 @@
+
+<view class="start_image">
+  <image src="../../images/start.jpg"></image>
+  <view class="flex">
+    <view class="userinfo-avatar">
+      <open-data type="userAvatarUrl"></open-data>
+    </view>
+    <view>
+    <!-- 需要使用 button 来授权登录 -->
+      <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="goto_home"    
+      class="button">
+      进入放映厅   
+      </button>
+      <view wx:else>请升级微信版本</view>
+    </view>
+  </view>
+</view>

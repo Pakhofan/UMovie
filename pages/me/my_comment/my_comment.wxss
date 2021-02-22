@@ -1,0 +1,51 @@
+.space {
+  width: 100%;
+  height: 100%;
+  background-color: #eff0f1;
+}
+.top{
+  height: 10rpx;
+  background-color: #eff0f1;
+}
+.center{
+  display: flex;
+  align-items: center;
+  font-size: 14pt;
+}
+image{
+  height: 100%;
+  width: 100%
+}
+.line {
+  border: 1px solid #ccc;
+  opacity: 0.2;
+  margin-top: -5rpx;
+}
+.card {
+    border: 0.5px solid #ffffff;
+    border-radius: 10px;
+    background-color: #ffffff;
+    box-shadow: 4px 1px 1px #cccccc;
+    margin: 10px;
+    position: relative;
+}
+.image {
+    width: 100rpx;
+    height: 100rpx;
+    margin: 20rpx;
+    border-radius: 50%;
+}
+.text{
+  color: #F2CB51;
+}
+.limitted{
+  font-size: 12pt;
+  line-height: 50rpx;
+  display: -webkit-box ;
+  overflow: hidden; /*隐藏溢出的文本  */
+  text-overflow: ellipsis;
+  word-break: break-all;/*自动换行*/
+  -moz-box-orient: vertical; /*从上到下自动排列子元素*/
+  -webkit-box-orient: vertical; 
+  -webkit-line-clamp:3; /*显示的行数*/
+}

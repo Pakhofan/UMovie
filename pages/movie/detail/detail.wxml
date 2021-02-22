@@ -1,0 +1,175 @@
+<view class="space">
+  <view class="top"></view>
+  <view class="flex">
+    <view>
+      <block wx:if="{{movie_detail.movie_image==''}}">
+        <image src="{{movie_image_test}}" class="movie_image"></image>
+      </block>
+      <block wx:else>
+        <image src="{{movie_detail.movie_image}}" class="movie_image"></image>
+      </block>
+    </view>
+    <view>
+      <view class="movie_information">
+        <text>{{movie_detail.movie_name}}</text>
+      </view>
+      <view class="movie_information2"> 
+        <text decode='true'>{{movie_detail.movie_form}}&emsp;{{movie_detail.movie_type}}</text>
+      </view>
+      <view class="movie_information2"> 
+        <text decode='true'>年份: {{movie_detail.year}}</text>
+      </view>
+      <view class="movie_information2"> 
+        <text decode='true'>团队: {{movie_detail.team_name}}</text>
+      </view>
+    </view>
+  </view>
+  <!--分数板块------------------------------------------>
+  <view class="card">
+    <view class="center">
+        <view class="score">
+          {{movie_detail.movie_score}}
+        </view>
+      <!--星星评价-->
+      <view class="comment1-description">
+        <view class="star-pos" style="display:flex;flex-direction:row;">
+          <view class="stars  {{movie_detail.movie_score>=1? 'on': ''}}"></view>
+          <view class="stars  {{movie_detail.movie_score>=2? 'on': ''}}"></view>
+          <view class="stars  {{movie_detail.movie_score>=3? 'on': ''}}"></view>
+          <view class="stars  {{movie_detail.movie_score>=4? 'on': ''}}"></view>
+          <view class="stars  {{movie_detail.movie_score>=5? 'on': ''}}"></view>
+        </view>
+      </view>
+      <view class="score_num">
+        {{movie_detail.critic_num}}人已评分
+      </view>
+      <!--星星评价-->
+    </view>
+  </view>
+  <!--分数板块------------------------------------------>
+  <!--简介板块------------------------------------------>
+  <view style="margin-left: 30rpx; margin-right: 30rpx;">
+    <view style="font-size: 17pt; margin-bottom: -60rpx;">
+      简介
+    </view>
+    <view>
+      <text decode='true' selectable style="margin-top:20rpx;"
+        class="content {{ellipsis?'ellipsis':'unellipsis'}}">
+        &emsp;&emsp;{{movie_detail.description}}
+      </text>
+      <view bindtap='ellipsis' class="right">
+        <text>{{ellipsis?'展开∨':'收起∧'}}</text>
+      </view>
+    </view>
+  </view>
+  <!--简介板块------------------------------------------>
+  <!--视频链接------------------------------------------>
+  <view style="margin-left: 30rpx; margin-right: 30rpx; margin-bottom: 30rpx;">
+    <view style="font-size: 17pt;">资源</view>
+    <view wx:if = "{{movie_detail.source_link==''}}">
+      <text  selectable decode='true' 
+      style="font-size: 12pt; margin-bottom: -60rpx; word-break: break-all;">&nbsp;&nbsp;&nbsp;&nbsp;暂无资源地址
+      </text>
+    </view>
+    <view wx:else>
+      <text  selectable decode='true' 
+      style="font-size: 12pt; margin-bottom: -60rpx; word-break: break-all;">&nbsp;&nbsp;&nbsp;&nbsp;{{movie_detail.source_link}}
+      </text>
+    </view>
+  </view>
+  <!--视频链接------------------------------------------>
+  <!--评论板块------------------------------------------>
+  <view class="comment_card">
+    <view class="comment_card_top">
+      <view style="margin-left:20rpx;margin-top:20rpx;font-size:17pt;">
+        微影评
+      </view>
+      <view style="margin-right:20rpx; font-size:13pt;" bindtap='showModal'>
+        我要点评>
+      </view>
+    </view>
+    <!--下方弹出评论窗口-------------------------------->
+    <form bindsubmit="formSubmit">
+    <view class="commodity_screen" 
+    wx:if="{{showModalStatus}}" bindtap="hideModal"></view>
+    <view animation="{{animationData}}" 
+    class="commodity_attr_box" wx:if="{{showModalStatus}}">
+      <view class="comment">
+        <view bindtap="hideModal">
+          取消
+        </view>
+      </view>
+      <!--选择影片分数-------------------------------->
+      <picker bindchange="bindPickerChange" name="score_index" 
+      value="{{index}}" range="{{array}}">
+        <view class="comment_score">
+          影片分数：
+          <text style="color: #F2CB51;">{{array[index]}}</text>
+          <view class="on" style="margin-left:10rpx;"></view>
+        </view>
+      </picker>
+      <!--选择影片分数-------------------------------->
+      <!--输入影评------------------------------------>
+      <view style="display: flex; justify-content: center;">
+        <textarea placeholder="微影评:" maxlength="800" name="comment" 
+        class="comment_textarea" bindinput='input'/>
+      </view>
+      <text class="right">{{input_num}}/{{limited_num}}</text>
+      <!--输入影评------------------------------------>
+      <!--提交按钮------------------------------------>
+      <view>
+        <button formType="submit" class="button">发布影评</button>
+      </view>
+      <!--提交按钮------------------------------------>
+    </view>
+    </form>
+    <!--下方弹出评论窗口-------------------------------->
+  </view>
+  <view class="comment_card"  wx:for="{{comment_array}}" wx:key="id">
+    <view class='comment_center'>
+      <image class="image" src='{{item.user_image}}'></image>
+      <text decode='true' class='text'>&emsp;{{item.score}}</text>
+      <!--评论星星评价-->
+      <view class="comment-star">
+        <view class="star-pos" style="display:flex;flex-direction:row;">
+          <view class="stars  {{item.score>=1? 'on': ''}}"></view>
+          <view class="stars  {{item.score>=2? 'on': ''}}"></view>
+          <view class="stars  {{item.score>=3? 'on': ''}}"></view>
+          <view class="stars  {{item.score>=4? 'on': ''}}"></view>
+          <view class="stars  {{item.score>=5? 'on': ''}}"></view>
+        </view>
+      </view>
+      <!--评论星星评价-->
+
+      <view class="like_list">
+        <view bindtap="praiseThis" data-curIndex="{{index}}">
+          <view wx:if="{{item.hasChange==false}}" class="like_num">
+            <image src="../../../icons/like.png" class="like"></image>
+            <text>{{item.like_num}}</text>
+          </view>
+          <view wx:else class="like_num">
+            <image src="../../../icons/like_avtive.png" class="like"></image>{{item.like_num}}
+          </view>
+        </view>
+      </view>
+
+    </view>
+    <!--评论语言------>
+    <view wx:if="{{item.movie_comment!=''}}">
+      <text decode='true' selectable 
+      class="content {{item.ellipsis_comment?'ellipsis':'unellipsis'}}"
+      >&emsp;&emsp;{{item.movie_comment}}
+      </text>
+      <view bindtap='ellipsis_comment' class="right" data-curIndex="{{index}}">
+        <text>{{item.ellipsis_comment?'展开∨':'收起∧'}}</text>
+      </view>
+    </view>
+    <view wx:else>
+      <text decode='true' style="font-size: 14pt;">&emsp;&emsp;此用户暂无评论</text>
+    </view>
+    <view class="line"></view>
+    <!--评论语言------>
+  </view>
+  <!--评论板块------------------------------------------>
+</view>
+<view style="background-color: #F9F8F4;height:30rpx;"></view>

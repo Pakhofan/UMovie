@@ -1,0 +1,83 @@
+  <!--swiper组件-->
+<view class="space">
+  <swiper indicator-dots='true' autoplay='true' interval='5000' 
+  circular='true' indicator-color='grey' indicator-active-color='white'>
+    <swiper-item><image src="{{swiper_image_1}}"></image></swiper-item>
+    <swiper-item><image src="{{swiper_image_2}}"></image></swiper-item>
+    <swiper-item><image src="{{swiper_image_3}}"></image></swiper-item>
+    <swiper-item><image src="{{swiper_image_4}}"></image></swiper-item>
+  </swiper>
+
+ <!--子组件向父组件传递数据，在父组件标签上加入自定义事件-->
+  <Tabs tabs="{{tabs}}" binditemChange="handleItemChange">
+    <block wx:if="{{tabs[0].isActive}}"><!--最新板块---------------------------->
+      <!--每个卡片------------------------------------->
+      <view class="card"  wx:for="{{comment_array}}" wx:key="id">
+        <view data-index="{{index}}" bindtap="goto_detail"><!--跳转的板块---------------->
+          <view class='center'>
+            <image class="image" src='{{item.user_image}}'></image>
+            <view style="margin-left:30rpx;">
+              评分:<text decode='true' class='text'>&nbsp;{{item.score}}</text>
+            </view>
+            <text style="margin-left:30rpx;">《{{item.movie_name}}》</text>
+          </view>
+          <view class="line"></view>
+          <text wx:if="{{item.movie_comment!=''}}" 
+          decode='true' selectable class='limitted' 
+          style="margin-bottom:30rpx;margin-left:30rpx;">&emsp;{{item.movie_comment}}
+          </text>
+          <text wx:else decode='true' selectable class='limitted' 
+          style="margin-bottom:30rpx;margin-left:30rpx;">&emsp;此用户暂无评论
+          </text>
+        </view><!--跳转的板块----------------------->
+      </view>
+      <!--每个卡片------------------------------------->
+    </block><!--最新板块------------------------------------------------------>
+    <block wx:elif="{{tabs[1].isActive}}"><!--热评板块------------------------------->
+      <!--每个卡片------------------------------------->
+      <view class="card" wx:for="{{comment_array}}" wx:key="id">
+        <view data-index="{{index}}" bindtap="goto_detail"><!--跳转的板块---------------->
+          <view class='center'>
+            <image class="image" src='{{item.user_image}}'></image>
+            <view style="margin-left:30rpx;">
+              评分:<text decode='true' class='text'>&nbsp;{{item.score}}</text>
+            </view>
+            <text style="margin-left:30rpx;">《{{item.movie_name}}》</text>
+          </view>
+          <view class="line"></view>
+          <text wx:if="{{item.movie_comment!=''}}" 
+          decode='true' selectable class='limitted' 
+          style="margin-bottom:30rpx;margin-left:30rpx;">&emsp;{{item.movie_comment}}
+          </text>
+          <text wx:else decode='true' selectable class='limitted' 
+          style="margin-bottom:30rpx;margin-left:30rpx;">&emsp;此用户暂无评论
+          </text>
+        </view><!--跳转的板块----------------------->
+      </view>
+      <!--每个卡片------------------------------------->
+    </block><!--热评板块------------------------------->
+    <block wx:elif="{{tabs[2].isActive}}"><!--精评板块---------------------------->
+      <!--每个卡片------------------------------------->
+      <view class="card" wx:for="{{comment_array}}" wx:key="id">
+        <view data-index="{{index}}" bindtap="goto_detail"><!--跳转的板块---------------->
+          <view class='center'>
+            <image class="image" src='{{item.user_image}}'></image>
+            <view style="margin-left:30rpx;">
+              评分:<text decode='true' class='text'>&nbsp;{{item.score}}</text>
+            </view>
+            <text style="margin-left:30rpx;">《{{item.movie_name}}》</text>
+          </view>
+          <view class="line"></view>
+          <text wx:if="{{item.movie_comment!=''}}" 
+          decode='true' selectable class='limitted' 
+          style="margin-bottom:30rpx;margin-left:30rpx;">&emsp;{{item.movie_comment}}
+          </text>
+          <text wx:else decode='true' selectable class='limitted' 
+          style="margin-bottom:30rpx;margin-left:30rpx;">&emsp;此用户暂无评论
+          </text>
+        </view><!--跳转的板块----------------------->
+      </view>
+      <!--每个卡片------------------------------------->
+    </block><!--精评板块------------------------------------------------------->
+    </Tabs>
+  </view>

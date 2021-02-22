@@ -1,0 +1,32 @@
+<!--start.wxml-->
+<view class="container">
+  <view class="remind-box" wx:if="{{remind}}">
+    <image class="remind-img" src="/images/more/loading.gif"></image>
+  </view>
+  <block wx:else>
+    <image class="title" src="/images/more/title.png"></image>
+    <view class="content">
+      <view class="hd" style="transform:rotateZ({{angle}}deg);">
+        <image class="wave" src="/images/more/wave.png" mode="aspectFill"></image>
+        <image class="wave wave-bg" src="/images/more/wave.png" mode="aspectFill"></image>
+      </view>
+      <view class="bd"> 
+          <image class="smalltitle" src="/images/more/sentence.png"></image>
+          <!-- 如果只是展示用户头像昵称，可以使用 <open-data /> 组件 -->
+          <view class="flex">
+            <view class="userinfo-avatar">
+              <open-data type="userAvatarUrl"></open-data>
+            </view>
+            <view>
+            <!-- 需要使用 button 来授权登录 -->
+              <button wx:if="{{canIUse}}" open-type="getUserInfo" bindgetuserinfo="goto_home"     
+              class="button">
+                进入放映室   
+              </button>
+              <view wx:else>请升级微信版本</view>
+            </view>
+          </view>
+      </view>
+    </view>
+  </block>
+</view>

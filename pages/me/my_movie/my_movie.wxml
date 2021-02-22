@@ -1,0 +1,31 @@
+<view class="space">
+  <view class="top"></view>
+  <view class="card"  wx:for="{{movie_array}}" wx:key="id">
+    <view data-index="{{index}}" bindtap="goto_detail"><!--跳转的板块-------------------->
+      <view class="movie-image">
+        <view wx:if="{{item.movie_image==''}}">
+          <image src="{{movie_image}}"></image>
+        </view>
+        <view wx:else>
+          <image src="{{item.movie_image}}"></image>
+        </view>
+        <view class="center">
+          <text>{{item.movie_name}}</text>
+          <!--星星评价-->
+          <view class="comment1-description">
+            <view class="star-pos">
+              <view>{{item.movie_score}}</view>
+              <view class="stars  {{item.movie_score>=1? 'on': ''}}"></view>
+              <view class="stars  {{item.movie_score>=2? 'on': ''}}"></view>
+              <view class="stars  {{item.movie_score>=3? 'on': ''}}"></view>
+              <view class="stars  {{item.movie_score>=4? 'on': ''}}"></view>
+              <view class="stars  {{item.movie_score>=5? 'on': ''}}"></view>
+            </view>
+          </view>
+          <!--星星评价-->
+          <text decode='true' class="critic">评价人数:&emsp;{{item.critic_num}}</text>
+        </view>
+      </view>
+    </view><!--跳转的板块----------------------->
+  </view>
+</view>

@@ -1,0 +1,23 @@
+<view class="space">
+  <view class="top"></view>
+  <!--每个卡片------------------------------------->
+  <view class="card"  wx:for="{{comment_array}}" wx:key="id">
+    <view data-index="{{index}}" bindtap="goto_detail"><!--跳转的板块---------------->
+      <view class='center'>
+        <image class="image" src='{{item.user_image}}'></image>
+        <view style="margin-left:30rpx;">
+          评分:<text decode='true' class='text'>&nbsp;{{item.score}}</text>
+        </view>
+        <text style="margin-left:30rpx;">《{{item.movie_name}}》</text>
+      </view>
+      <view class="line"></view>
+      <text wx:if="{{item.movie_comment!=''}}" decode='true' selectable class='limitted' 
+      style="margin-bottom:30rpx;margin-left:30rpx;">&emsp;{{item.movie_comment}}
+      </text>
+      <text wx:else decode='true' selectable class='limitted' 
+      style="margin-bottom:30rpx;margin-left:30rpx;">&emsp;此用户暂无评论
+      </text>
+    </view><!--跳转的板块----------------------->
+  </view>
+  <!--每个卡片------------------------------------->
+</view>

@@ -1,0 +1,101 @@
+<form bindsubmit="formSubmit">
+<view class="space">
+  <view class="top"></view>
+    <view class="background">
+      <view class="section_announcement">
+        <text>上传电影前，请先在电影页面中确认没有该电影，再自行上传，以免重复</text>
+      </view>
+      <view class="section">
+        <input name="movie_name" placeholder="电影名称"/>
+      </view>
+      <view class="section">
+        <input name="year" placeholder="年份" />
+      </view>
+      <view class="section">
+        <input name="team_name" placeholder="团队名称" />
+      </view>
+      <view>
+        <textarea maxlength='-1' name="source_link" 
+        placeholder="资源地址(若无可不填，如果需要上传影片文件，可联系客服)" class="text_section1" />
+      </view>
+      <view>
+        <textarea name="movie_description" placeholder="简介描述" maxlength="800" bindinput='input' class="text_section2"/>
+        <text class="right">{{input_num}}/{{limited_num}}</text>
+      </view>
+    </view>
+  <!--button bindtap="get_openid">得到opedid</button-->
+  <view class="middle"></view><!--填补中间背景的空白-------------------->
+</view>
+<view class="space">
+  <view class="top"></view>
+  <view class="background">
+    <!--上传电影宣传图----------------------------->
+    <view bindtap="choose_image">
+      <view class="section6">
+        上传影片宣传图
+        <image src="../../../icons/upload_image.png" style="height:80rpx;width:80rpx;">
+        </image>
+      </view>
+      <view style="margin-left:40rpx; margin-top:-10rpx; font-size:10pt;color:#808080">
+        (可不上传，则使用默认宣传图)
+      </view>
+    </view>
+    <view wx:if="{{temporary_image_path!=null}}">
+      <image src="{{temporary_image_path}}" 
+      style="width:200rpx; height:200rpx; margin-left: 40rpx;">
+      </image>
+    </view>
+    <!--上传电影宣传图----------------------------->
+    <view class="section3">
+      <radio-group name="movie_form">
+        影片形式
+        <label><radio id="form1" value="纪录片" bindtap="get_movie_form1"/>
+          纪录片
+        </label>
+        <label><radio id="form2" value="故事片" bindtap="get_movie_form2"/>
+          故事片
+        </label>
+      </radio-group>
+    </view>
+    <block>
+      <view wx:if = "{{temporary_movie_form=='form1'}}" class="section5">
+        纪录片类型
+        <radio-group name="movie_type">
+          <view class="flex_column">
+            <label><radio value="人物/事物"/>人物/事物</label>
+            <label><radio value="文化/手艺"/>文化/手艺</label>
+            <label><radio value="历史/事件"/>历史/事件</label>
+          </view>
+        </radio-group>
+      </view>
+      <view wx:elif = "{{temporary_movie_form=='form2'}}" class="section4">
+        故事片类型
+        <radio-group name="movie_type">
+          <view class="flex_row">
+            <label><radio value="剧情"/>剧情</label>
+            <label><radio value="喜剧"/>喜剧</label>
+            <label><radio value="动作"/>动作</label>
+          </view>
+          <view class="flex_row">
+            <label><radio value="爱情"/>爱情</label>
+            <label><radio value="科幻"/>科幻</label>
+            <label><radio value="历史"/>历史</label>
+          </view>
+          <view class="flex_row">
+            <label><radio value="悬疑"/>悬疑</label>
+            <label><radio value="战争"/>战争</label>
+            <label><radio value="动画"/>动画</label>
+          </view>
+        </radio-group>
+      </view>
+    </block>
+    
+
+
+  </view>
+  <view>
+    <button formType="submit" class="button">上传影片</button>
+  </view>
+  <view class="bottom"></view><!--填补底部空白---------------->
+</view>
+</form>

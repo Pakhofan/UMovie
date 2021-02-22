@@ -1,0 +1,12 @@
+<view class="tabs">
+  <view class="tabs_title">
+    <view wx:for="{{tabs}}" wx:key="id" bindtap="handleItemTap" data-index="{{index}}"
+    class="title_item {{item.isActive?'active':''}}">
+      {{item.name}}
+    </view>
+  </view>
+  <view class="tabs_content">
+    <!--slot插槽是一个占位符，不写死，父组件调用子组件时，再传递标签过来，替换slot插槽的位置-->
+    <slot></slot>
+  </view>
+</view>

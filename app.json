@@ -1,0 +1,48 @@
+{
+  "pages": [
+    "pages/start/start",
+    "pages/me/me",
+    "pages/movie/movie",
+    "pages/me/upload/upload",
+    "pages/home/home",
+    "pages/index/index",
+    "pages/movie/detail/detail",
+    "pages/me/my_movie/my_movie",
+    "pages/me/my_comment/my_comment",
+    "pages/me/copyright/copyright",
+    "pages/logs/logs"
+  ],
+  "window": {
+    "navigationBarBackgroundColor": "#69C3AA",
+    "navigationBarTitleText": "UMovie",
+    "navigationBarTextStyle": "white"
+  },
+  "tabBar": {
+    "color": "#F5F5F5",
+    "selectedColor": "#F5F5F5",
+    "backgroundColor": "#69C3AA",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "text": "Home",
+        "iconPath": "icons/home.png",
+        "selectedIconPath": "icons/home_active.png"
+      },
+      {
+        "pagePath": "pages/movie/movie",
+        "text": "Movie",
+        "iconPath": "icons/movie.png",
+        "selectedIconPath": "icons/movie_active.png"
+      },
+      {
+        "pagePath": "pages/me/me",
+        "text": "Me",
+        "iconPath": "icons/me.png",
+        "selectedIconPath": "icons/me_active.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "sitemapLocation": "sitemap.json"
+}

@@ -1,0 +1,63 @@
+<view class='top'>
+  <view class="userinfo">
+    <block wx:if="{{!hasUserInfo && canIUse}}">
+      <view class='image'>
+        <image src='{{user_image}}'></image>
+      </view>
+      <button open-type="getUserInfo" bindgetuserinfo="getUserInfo" size="mini" > 登录           
+      </button>
+    </block>
+    <block wx:else>
+      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" mode="cover"></image>
+      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+    </block>
+  </view>
+</view>
+<view class="space"></view>
+<view class="line"></view>
+<!--navigator-->
+  <view class="item" bindtap="goto_upload">
+      <view class="title">
+        我要上传
+      </view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+  </view>
+<!--/navigator-->
+<view class="line"></view>
+<navigator url='my_movie/my_movie'>
+  <view class="item">
+      <view class="title">
+        我的作品
+      </view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+  </view>
+</navigator>
+<view class="line"></view>
+<navigator url='my_comment/my_comment'>
+  <view class="item">
+      <view class="title">
+        我的影评
+      </view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+  </view>
+</navigator>
+<view class="line"></view>
+<navigator url='copyright/copyright'>
+  <view class="item">
+      <view class="title">
+        平台说明
+      </view>
+      <view class="detail">
+        <text> ></text>
+      </view>
+  </view>
+</navigator>
+<view class="line"></view>
+<button open-type="contact" class="contact_button">联系客服</button>
+<view class="bottom"></view>

@@ -1,0 +1,73 @@
+.top{
+  width: 100%;
+  height: 280rpx;
+  background-color: #69C3AA;
+}
+image{
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.image{
+  display:flex;
+  justify-content: center;
+}
+.button{
+  size: mini;
+  display:flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+.space {
+  width: 100%;
+  height: 15px;
+  background-color: #f4f5f6;
+}
+.line {
+  border: 1px solid #ccc;
+  opacity: 0.15;
+}
+.item {
+  display: flex;
+  flex-direction: row;
+}
+.title {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  padding-left: 15px;
+  font-size: 15px;
+  color: #888;
+}
+.detail {
+  font-size: 15px;
+  position: absolute;
+  right: 10px;
+  height: 50px;
+  line-height: 50px;
+  color: #ADADAD;
+}
+.contact_button{
+  background:white; 
+  color:#ADADAD;
+}
+.bottom{
+  width: 100%;
+  height: 500rpx;
+  background-color: #f4f5f6;
+}
+/**获取用户头像昵称**/
+.userinfo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.userinfo-avatar {
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx;
+  border-radius: 50%;
+}
+.userinfo-nickname {
+  color:#f4f5f6;
+}
